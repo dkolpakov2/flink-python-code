@@ -52,6 +52,13 @@ and check Flink Dashboard at http://localhost:8081 (or whatever ip is assigned -
 - Two nodes are started - JobManager & TaskManager.
 - Project folder is mapped as */app/* to both nodes.
 
+docker-compose stop
+docker-compose down --volumes
+docker-compose config 
+docker-compose --env-file ./config/.env.dev up
+docker-compose --env-file ./config/.env.dev config
+docker compose run -e DEBUG=1 web python console.py
+docker compose run -e DEBUG web python console.py
 
 ## Trigger hello_world.py Flink job
 Running

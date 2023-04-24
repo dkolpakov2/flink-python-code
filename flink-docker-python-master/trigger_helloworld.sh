@@ -3,8 +3,3 @@
 # Script is run from source folder mapped to /app in the container
 
 docker exec -it flinkdockerpython_jobmanager_1 /app/src/trigger.sh
-
-# docker exec -it flink-python-code_jobmanager_1 /app/src/trigger.sh
-
-docker exec -it flink-python-code_jobmanager_1 bash
-

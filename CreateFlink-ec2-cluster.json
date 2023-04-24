@@ -1,0 +1,96 @@
+## API call: RunInstancesCommand
+{
+  "MaxCount": 1,
+  "MinCount": 1,
+  "ImageId": "ami-02396cdd13e9a1257",
+  "InstanceType": "c5a.large",
+  "KeyName": "ec2bastion_keypair",
+  "EbsOptimized": true,
+  "BlockDeviceMappings": [
+    {
+      "DeviceName": "/dev/xvda",
+      "Ebs": {
+        "Encrypted": false,
+        "DeleteOnTermination": true,
+        "Iops": 3000,
+        "SnapshotId": "snap-0b496945a8bdc7424",
+        "VolumeSize": 24,
+        "VolumeType": "gp3",
+        "Throughput": 125
+      }
+    }
+  ],
+  "NetworkInterfaces": [
+    {
+      "DeviceIndex": 0,
+      "AssociatePublicIpAddress": true,
+      "Groups": [
+        "<groupId of the new security group created below>"
+      ]
+    }
+  ],
+  "TagSpecifications": [
+    {
+      "ResourceType": "instance",
+      "Tags": [
+        {
+          "Key": "Name",
+          "Value": "flink-ec2"
+        }
+      ]
+    }
+  ],
+  "PrivateDnsNameOptions": {
+    "HostnameType": "ip-name",
+    "EnableResourceNameDnsARecord": true,
+    "EnableResourceNameDnsAAAARecord": false
+  }
+}
+
+## API call: createSecurityGroup
+## The following JSON will be passed to the createSecurityGroup command.
+
+{
+  "GroupName": "launch-wizard-7",
+  "Description": "launch-wizard-7 created 2023-04-23T23:09:26.162Z",
+  "VpcId": "vpc-00b71fe22f55ea36a"
+}
+
+## API call: authorizeSecurityGroupIngress
+## The following JSON will be passed to the authorizeSecurityGroupIngress command.
+
+{
+  "groupId": "<groupId of the security group created above>",
+  "ipPermissions": [
+    {
+      "ipProtocol": "tcp",
+      "fromPort": 22,
+      "toPort": 22,
+      "ipRanges": [
+        {
+          "cidrIp": "0.0.0.0/0"
+        }
+      ]
+    },
+    {
+      "ipProtocol": "tcp",
+      "fromPort": 443,
+      "toPort": 443,
+      "ipRanges": [
+        {
+          "cidrIp": "0.0.0.0/0"
+        }
+      ]
+    },
+    {
+      "ipProtocol": "tcp",
+      "fromPort": 80,
+      "toPort": 80,
+      "ipRanges": [
+        {
+          "cidrIp": "0.0.0.0/0"
+        }
+      ]
+    }
+  ]
+}

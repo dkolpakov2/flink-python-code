@@ -39,7 +39,7 @@ services:
       - ./:/app
   pyflink:
     build:
-      context: ./py
+      context: ./opt/python
       dockerfile: Dockerfile
     image: flink:latest
     command: bin/sql-client.sh      
