@@ -6,5 +6,5 @@ docker exec -it flinkdockerpython_jobmanager_1 /app/src/trigger.sh
 
 # docker exec -it flink-python-code_jobmanager_1 /app/src/trigger.sh
 
-docker exec -it flink-python-code_jobmanager_1 bash
+# docker exec -it flink-python-code_jobmanager_1 bash
 

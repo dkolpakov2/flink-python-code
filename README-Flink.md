@@ -338,3 +338,16 @@ Connect to Flink SSH ->
 	awscli 2.9.19 requires prompt-toolkit<=3.0.29,>=3.0.24, but you have prompt-toolkit 3.0.38 which is incompatible.
 	
 	[esc]:set prompt
+	
+## Create cert (will need mkcert):
+mkcert \
+>  -cert-file flink.local.crt \
+>  -key-file flink.local.key \
+>  flink.local
+
+## 	Fix ec2 deployment config issue:
+rest.port: 8081
+rest.addres: localhost
+rest.bind-address: 0.0.0.0
+
+
