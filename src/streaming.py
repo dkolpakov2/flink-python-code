@@ -20,7 +20,8 @@
 # python3 -c "import sys; print('\n'.join(sys.path))"
 # $ which python3
 # output will be: /usr/bin/python3
-# ./flink-1.16.1/bin/flink run -py process_movies.py -pyclientexec “/usr/bin/python3.exe” -pyexec “/usr/bin/python3.exe” -—output “out.txt” --input "input.txt"./flink-1.14.3/bin/flink run -py streaming.py -pyclientexec “/python.exe” -pyexec “path_to\python.exe” -—output “out.txt” --input "input.txt"
+# ~/flink-1.16.1/bin/flink run -py process_movies.py -pyclientexec “/usr/bin/python3.exe” -pyexec “/usr/bin/python3.exe” -—output “out.txt” --input "input.txt"./flink-1.14.3/bin/flink run -py streaming.py -pyclientexec “python3.exe” -pyexec “python3.exe” -—output “out.txt” --input "input.txt"
+# ~/flink-1.16.1/bin/flink run -py process_movies.py -pyclientexec “/usr/bin/python3.exe” -pyexec “/usr/bin/python3.exe” -—output “out.txt” --input "input.txt"./flink-1.14.3/bin/flink run -py streaming.py -pyclientexec “python3.exe” -pyexec “python3.exe” -—output “out.txt” --input "input.txt"
 #
 
 
