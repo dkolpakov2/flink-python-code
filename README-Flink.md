@@ -129,14 +129,16 @@ Flink Public IP: 44.202.84.33  DNS:  ec2-44-202-84-33.compute-1.amazonaws.com
 >> PUBLIC: ec2-3-81-27-218.compute-1.amazonaws.com
 
 chmod 400 ~/.aws/ec2bastion_keypair.pem
-ssh -i "ec2bastion_keypair.pem" ec2-user@ec2-3-81-27-218.compute-1.amazonaws.com:22
+ssh -i "ec2bastion_keypair.pem" ec2-user@ec2-3-236-248-204.compute-1.amazonaws.com:22
 -i ~/.aws/ec2bastion_keypair.pem private
 # BAD -> ssh -i "ec2bastion_keypair.pem" ec2-user@ec2-44-202-148-27.compute-1.amazonaws.com  -L 2222:ip-172-31-68-123.ec2.internal:22
-ssh -i "ec2bastion_keypair.pem" ec2-user@ec2-44-202-148-27.compute-1.amazonaws.com  -L 2222:ec2-3-81-27-218.compute-1.amazonaws.com:22
+## IP: 
+3.236.248.204
+ssh -i "ec2bastion_keypair.pem" ec2-user@ec2-44-202-148-27.compute-1.amazonaws.com  -L 2222:ec2-3-236-248-204.compute-1.amazonaws.com:22
 ## transfer the file:
 	scp -P 2222 Source-File-Path user-fqdn@localhost:
 ## Transfer folder:
-	scp -r -P 2222 flink-1.16.1 ec2-user@ec2-3-81-27-218.compute-1.amazonaws.com:22
+	scp -r -P 2222 flink-1.16.1 ec2-user@ec2-3-236-248-204.compute-1.amazonaws.com:22
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 # Small Mem... i-03e98ff23030e8703 (flink-cluster)->   ec2-44-202-84-33.compute-1.amazonaws.com   private: ip-172-31-81-152.ec2.internal
@@ -332,6 +334,19 @@ Connect to Flink SSH ->
  pip install nltk
  LANGUAGE="" LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 jupiter notebook
  
+ ## Install jupiterlab:
+ wget https://files.pythonhosted.org/packages/bb/e7/35740a554dfcc5da8f77f8c717b55f82ee3a396272fe2db2005212cc2e40/jupyterlab-3.6.3.tar.gz
+ tar -xvzf jupyterlab-3.6.3.tar.gz
+ # got to folder jupyterlab-3.6.3
+ pyflink3 setup.py build
+ pyflink3 setup.py install
+ 
+ #will get error: error: y-py 0.5.9 is installed but y-py<0.7.0,>=0.6.0 is required by {'ypy-websocket'}
+ #fix:
+ pip install y-py==0.6.0 
+ pyflink3 setup.py install
+
+ 
  ## ERROR:
  ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. 
 	This behaviour is the source of the following dependency conflicts.
@@ -350,4 +365,24 @@ rest.port: 8081
 rest.addres: localhost
 rest.bind-address: 0.0.0.0
 
+## 
+pip install wget
+## use in .py
+	impoprt wget 
+	instacart = "https://s3.amazonaws.com/instacart-datasets/instacart_online_grocery_shopping_2017_05_01.tar.gz"
+	wget.download(instacart)
+	import tarfile
+	tf = tarfile("instacart_online_grocery_shopping_2017_05_01.tar.gz")
+	tf.extractall()
+	arfile.open("instacart_online_grocery_shopping_2017_05_01.tar.gz")
+	import pandas as pd
+	prd =pd.read_csv("product.csv")
+	prd.head()  # will show prd data
+	
+##	
 
+    error: legacy-install-failure
+     
+      Encountered error while trying to install package.
+     
+      numpy
